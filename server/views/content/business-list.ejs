@@ -1,0 +1,53 @@
+<div class="row justify-content-md-center">
+  <div class="col">
+    <div>
+      <div>
+        <h1 class="display-4" style="text-align: center" >Contact Me</h1>
+        <hr class="my-4">
+      </div>
+            <% if(typeof displayName == 'string' && displayName) { %>
+            <a href="/business-list/add" class="btn btn-primary btn-lg"><i class="fas fa-plus-circle"></i> Add New Contact</a>
+            <% } %>
+            <table class="table table-striped table-bordered table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Number</th>
+                  <th scope="col">Email Address</th>
+                  <% if(typeof displayName == 'string' && displayName) { %>               
+                  <th></th>
+                  <th></th>
+                  <% } %>
+                </tr>
+              </thead>
+              <tbody>
+
+                <% for(let count=0; count < businessess.length; count++) { %>
+
+                <tr>
+                  <td><%= businessess[count].name %></td>
+                  <td><%= businessess[count].number %></td>
+                  <td><%= businessess[count].email %></td>
+                  
+                  <td>
+                    <a href="/business-list/edit/<%= businessess[count]._id %>" class="btn btn-primary btn-sm">
+                        <i class="fas fa-edit"></i> Update</a>
+                  </td>
+                  <td>
+                      <a href="/business-list/delete/<%= businessess[count]._id %>" class="btn btn-danger btn-sm">
+                          <i class="fas fa-trash-alt"></i> Delete</a>
+                  </td>
+
+                </tr>
+                
+              <% } %>
+
+              </tbody>
+            </table>
+
+    </div>
+  </div>
+
+<link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/@fortawesome/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="/Content/app.css">
